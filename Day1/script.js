@@ -46,3 +46,16 @@ function findFirstLast(array) {
 
 let pairs = findFirstLast(example);
 console.log(pairs);
+
+
+function sumOfPairs(array) {
+    let sum = 0;
+    for (let element of array) {
+            let parsed = parseInt(element); //no second parameter because base10 is default
+            sum = sum + parsed; // 12+38+15+77
+    }
+    return sum;
+}
+
+let resultSumOfPairs = sumOfPairs(pairs);
+console.log(resultSumOfPairs);
