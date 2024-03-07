@@ -21,9 +21,6 @@ treb7uchet
 /* console.log(element.trim().match(regex).join("")) */
 /* console.log(element.trim().match(regex)) ; */
 
-const example = ["1abc2 ", "pqr3stu8vwx ", "a1b2c3d4e5f", "treb7uchet"];
-const regex = /\d/gm; //regex to find all numbers in a string, global and multiline
-
 // for (let element of example) {  //for each string in array
 
 //   let match = element.trim().match(regex) ; //create array from trimmed strings that contain only numbers
@@ -33,6 +30,21 @@ const regex = /\d/gm; //regex to find all numbers in a string, global and multil
 //     console.log(pairs); 
 //     console.log(); //sum of all numbers in string
 // } 
+
+
+// Include fs module
+import fs from 'fs';
+
+const data = fs.readFileSync('./input.txt', 'utf-8').split('\n');
+
+console.log(data);
+
+
+const example = ["1abc2 ", "pqr3stu8vwx ", "a1b2c3d4e5f", "treb7uchet"];
+const regex = /\d/gm; //regex to find all numbers in a string, global and multiline
+
+
+
 
 function findFirstLast(array) {
     let result = [];
@@ -44,7 +56,7 @@ function findFirstLast(array) {
     return result;
 }
 
-let pairs = findFirstLast(example);
+let pairs = findFirstLast(data);
 console.log(pairs);
 
 
