@@ -37,10 +37,10 @@ import fs from 'fs';
 
 const data = fs.readFileSync('./input.txt', 'utf-8').split('\n');
 
-console.log(data);
+// console.log(data);
 
 
-const example = ["1abc2 ", "pqr3stu8vwx ", "a1b2c3d4e5f", "treb7uchet"];
+const example = ["1abc2 ", "pqr3stu8vwx ", "A1b2c3d4e5F", "treb7uchet"];
 const regex = /\d/gm; //regex to find all numbers in a string, global and multiline
 
 
@@ -56,8 +56,8 @@ function findFirstLast(array) {
     return result;
 }
 
-let pairs = findFirstLast(data);
-console.log(pairs);
+//  let pairs = findFirstLast(data);
+//  console.log(pairs);
 
 
 function sumOfPairs(array) {
@@ -69,8 +69,8 @@ function sumOfPairs(array) {
     return sum;
 }
 
-let resultSumOfPairs = sumOfPairs(pairs);
-console.log(resultSumOfPairs);
+//  let resultSumOfPairs = sumOfPairs(pairs);
+//  console.log(resultSumOfPairs);
 
 // Part 2
 
@@ -84,7 +84,7 @@ console.log(resultSumOfPairs);
 // 7pqrstsixteen
 
 
-
+const spelledOutExample = ["Two1nine", "eighTwoThree", "abcone2Threexyz", "xtwone3four", "4Nineeightseven2", "zoneight234", "7pqrstsixteen"];
 const spelledOut = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
 //need function to find all spelled out numbers in a string
@@ -104,6 +104,19 @@ const singleDigitMap = {
     'nine': '9'
   };
 
-//   const words = data.toLowerCase().split(' ');
 
-//   console.log(words);
+
+
+function findWords(array) {
+    let result = [];
+
+    for (let element of array) { 
+        
+       
+         result.push(element.toLowerCase()); 
+    }
+    return result;
+}
+
+console.log(findWords(spelledOutExample));
+
