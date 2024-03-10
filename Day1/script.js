@@ -72,7 +72,8 @@ function sumOfPairs(array) {
 //  let resultSumOfPairs = sumOfPairs(pairs);
 //  console.log(resultSumOfPairs);
 
-// Part 2
+// Part 2 find speleed out words and convert them to digits
+// Idea nr1 find words and convert them to digits, then pass them to function from part1
 
 // Example input:
 // two1nine
@@ -91,23 +92,33 @@ const spelledOut = ["one", "two", "three", "four", "five", "six", "seven", "eigh
 
 //or function to convert spelled out numbers to digits
 
-const singleDigitMap = {
-    'zero': '0',
-    'one': '1',
-    'two': '2',
-    'three': '3',
-    'four': '4',
-    'five': '5',
-    'six': '6',
-    'seven': '7',
-    'eight': '8',
-    'nine': '9'
-  };
+const singleDigitMap = new Map([
+    ['zero', '0'],
+    ['one', '1'],
+    ['two', '2'],
+    ['three', '3'],
+    ['four', '4'],
+    ['five', '5'],
+    ['six', '6'],
+    ['seven', '7'],
+    ['eight', '8'],
+    ['nine', '9'],
+    ['ten', '10'],
+    ['eleven', '11'],
+    ['twelve', '12'],
+    ['thirteen', '13'],
+    ['fourteen', '14'],
+    ['fifteen', '15'],
+    ['sixteen', '16'],
+    ['seventeen', '17'],
+    ['eighteen', '18'],
+    ['nineteen', '19']
+]);
 
 
+console.log(singleDigitMap.size);
 
-
-function findWords(array) {
+function toLowerCase(array) {
     let result = [];
 
     for (let element of array) { 
@@ -118,5 +129,29 @@ function findWords(array) {
     return result;
 }
 
-console.log(findWords(spelledOutExample));
+console.log(toLowerCase(spelledOutExample));
 
+function newString(array) {
+    let result = [];
+
+
+    for (let element of array) {
+             result.push(element.replace("nine", "9"));       
+    }
+    
+    return result;
+}
+
+
+console.log(newString(toLowerCase(spelledOutExample)));
+
+function protoReplaceStringFromCharMap(charMap, string) {
+    for(const key of charMap.keys()) {
+        string = string.replace(key, charMap.get(key));
+    }
+    return string;
+
+
+}
+
+console.log(protoReplaceStringFromCharMap(singleDigitMap, "4Nineeightseven27pqrstsixteen"));
