@@ -1,13 +1,8 @@
-// Include fs module
 import fs from 'fs';
+
 const data = fs.readFileSync('./input.txt', 'utf-8').split('\n');
-
-
 const example = ["1abc2 ", "pqr3stu8vwx ", "A1b2c3d4e5F", "treb7uchet"];
 const regex = /\d/gm; //regex to find all numbers in a string, global and multiline
-
-
-
 
 function findFirstLast(array) {
     let result = [];
@@ -32,8 +27,8 @@ function sumOfPairs(array) {
     return sum;
 }
 
- let resultSumOfPairs = sumOfPairs(pairs);
-//   console.log("resultSumOfPairs v1:" + "\n" +  resultSumOfPairs);
+//  let resultSumOfPairs = sumOfPairs(pairs);
+//    console.log("resultSumOfPairs v1:" + "\n" +  resultSumOfPairs);
 
 // Part 2 find speleed out words and convert them to digits
 // Idea nr1 find words and convert them to digits, then pass them to function from part1
@@ -89,16 +84,43 @@ let finishedvalues = newString(toLowerCase(data));
 
 // This function needs to be refactored to work with charMap all keys at the same time adn from the beginning of each string and
 // to avoid results like eightwothree -> eigh23
-function ReplaceStringFromCharMap(charMap, string) {
-    for(const key of charMap.keys()) {
-        string = string.replaceAll(key, charMap.get(key));
-        console.log(charMap.get(key));
-        
-    }
-    return string;
-}
+// function ReplaceStringFromCharMap(charMap, string) {
+//     for(const key of charMap.keys()) {
 
-let fromFileFinishedValues = newString(toLowerCase(spelledOutExample));
+//          string = string.replaceAll(key, charMap.get(key));
+
+//     }
+//     return string;
+// }
+
+
+function ReplaceStringFromCharMap(charMap, string) {
+
+    let result = "" ;
+    let i = 0;
+    
+
+    while (i < string.length) {   
+        let found = false;      
+        for ( const [key, value] of charMap) {
+            
+            if( string.startsWith(key,i)) {
+                string = string.replaceAll(key, charMap.get(key)); //retrieves the value associated with the key from a map 
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            i++;
+            }
+  }
+
+  return string;
+}   
+
+
+
+let fromFileFinishedValues = newString(toLowerCase(data));
    console.log(fromFileFinishedValues);
 
 let pairs2 = findFirstLast(fromFileFinishedValues);
